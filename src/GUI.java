@@ -98,8 +98,10 @@ public class GUI {
 
     }
 
-    public static void main(String[] args) {
+    public static void displayGUI(){
         GUI gui = new GUI();
         gui.createGUI();
     }
+
+
 }
