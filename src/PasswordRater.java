@@ -1,5 +1,9 @@
-import java.util.regex.Matcher; 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 public class PasswordRater {
     
     public static void rate(String input){
@@ -61,11 +65,41 @@ public class PasswordRater {
     }
 
     public static void timeEstimation(String input){
-        
+        long startTime = System.currentTimeMillis();
+        dictionaryAttack(input);
+        long finishTime = System.currentTimeMillis();
+        long execution = finishTime - startTime;
+        long toMinute = TimeUnit.MILLISECONDS.toMinutes(execution);
+        long toSeconds = TimeUnit.MILLISECONDS.toSeconds(execution);
+        System.out.println("Execution time of dictionary attack in miliseconds: " + execution);
+    }
+
+    public static void dictionaryAttack(String input){
+        BufferedReader br = null;
+        String line;
+        boolean found = false;
+        try{
+            FileReader fr = new FileReader("rockyou.txt");
+            br = new BufferedReader(fr);
+            while((line = br.readLine())!= null){
+                if(line.equals(input)){
+                    System.out.println("Found password in dictionary");
+                    found = true;
+                    break;
+                }
+            }
+        }
+        catch(Exception e){
+            System.out.println("Error with reading file");
+        }
+        if(found == false){
+            System.out.println("Input password could not be found in dictionary");
+        }
+
     }
     public static void main(String[] args){
         rate("hellS1*D");
-        
+        timeEstimation("Aaron615");
     }
 
 }
