@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class PasswordRater {
     
-    public static void rate(String input){
+    public static String rate(String input){
        int counter = 0;
        String grade="";
        if (input.length()>= 8)
@@ -61,7 +61,8 @@ public class PasswordRater {
        {
            grade= "Password Grade = F";
        }
-       System.out.println(grade);
+       return grade;
+
     }
 
     public static void timeEstimation(String input){
@@ -72,6 +73,239 @@ public class PasswordRater {
         long toMinute = TimeUnit.MILLISECONDS.toMinutes(execution);
         long toSeconds = TimeUnit.MILLISECONDS.toSeconds(execution);
         System.out.println("Execution time of dictionary attack in miliseconds: " + execution);
+    }
+
+    public static boolean hasSymbol(String input){
+        Pattern specialPattern = Pattern.compile("[^a-z0-9]", Pattern.CASE_INSENSITIVE);
+        Matcher specialMatcher = specialPattern.matcher(input);
+        boolean specialBoolean = specialMatcher.find();
+        return specialBoolean;
+    }
+
+    public static boolean hasUppers(String input){
+        for (int i = 0; i < input.length(); i++) {
+            if (Character.isUpperCase(input.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean hasLower(String input){
+        for (int i = 0; i < input.length(); i++) {
+            if (Character.isUpperCase(input.charAt(i))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    public static boolean hasNumbers(String input){
+        Pattern numberPattern = Pattern.compile("[0-9]");
+        Matcher numberMatcher = numberPattern.matcher(input);
+        boolean numberBoolean = numberMatcher.find();
+        return numberBoolean;
+    }
+
+    public static void bruteForce(String input){
+        int stringLength = input.length();
+        if(stringLength <= 5){
+            System.out.println("Instantly");
+        }
+        switch(stringLength){
+            case 6:
+                if(hasNumbers(input) && hasLower(input) && hasUppers(input) && hasSymbol(input)){
+                    System.out.println("5 seconds");
+                    break;
+                }
+                else if(hasNumbers(input) && hasLower(input) && hasUppers(input)){
+                    System.out.println("1 second");
+                    break;
+                }
+                else{
+                    System.out.println("Instantly");
+                    break;
+                }
+
+            case 7:
+                if((hasNumbers(input) && hasLower(input) && hasUppers(input) && hasSymbol(input))){
+                System.out.println("6 minutes");
+                break;
+                 }
+                else if(hasUppers(input) && hasLower(input) && hasNumbers(input)){
+                    System.out.println("1 minute");
+                    break;
+                }
+                else if(hasUppers(input) && hasLower(input)){
+                    System.out.println("25 seconds");
+                    break;
+                }
+
+
+            case 8:
+                if(rate(input).equals("Password Grade = A")){
+                    System.out.println("8 hours");
+                    break;
+                }
+                else if(hasNumbers(input) && hasLower(input) && hasUppers(input)){
+                    System.out.println("1 hour");
+                    break;
+                }
+
+                else if (hasUppers(input) && hasLower(input)){
+                    System.out.println("22 minutes");
+                    break;
+                }
+
+                else if(hasNumbers(input)){
+                    System.out.println("Instantly");
+                    break;
+                }
+                else if(hasLower(input)){
+                    System.out.println("5 seconds");
+                    break;
+                }
+
+
+            case 9:
+                if(rate(input).equals("Password Grade = A")){
+                    System.out.println("3 weeks");
+                    break;
+                }
+                else if(hasNumbers(input) && hasLower(input) && hasUppers(input)){
+                    System.out.println("3 days");
+                    break;
+                }
+                else if (hasUppers(input) && hasLower(input)){
+                    System.out.println("19 hours");
+                    break;
+                }
+
+                else if(hasLower(input)){
+                    System.out.println("2 minutes");
+                    break;
+                }
+
+                else if(hasNumbers(input)){
+                    System.out.println("Instantly");
+                    break;
+                }
+
+            case 10:
+                if(rate(input).equals("Password Grade = A")){
+                    System.out.println("5 years");
+                    break;
+                }
+                else if(hasNumbers(input) && hasLower(input) && hasUppers(input)){
+                    System.out.println("7 months");
+                    break;
+                }
+                else if (hasUppers(input) && hasLower(input)){
+                    System.out.println("1 month");
+                    break;
+                }
+                else if(hasLower(input)){
+                    System.out.println("58 minutes");
+                    break;
+                }
+
+                else if(hasNumbers(input)){
+                    System.out.println("Instantly");
+                    break;
+                }
+
+            case 11:
+                if(rate(input).equals("Password Grade = A")){
+                    System.out.println("400 years");
+                    break;
+                }
+                else if(hasNumbers(input) && hasLower(input) && hasUppers(input)){
+                    System.out.println("41 years");
+                    break;
+                }
+                else if (hasUppers(input) && hasLower(input)){
+                    System.out.println("5 years");
+                    break;
+                }
+                else if(hasLower(input)){
+                    System.out.println("1 day");
+                    break;
+                }
+
+                else if(hasNumbers(input)){
+                    System.out.println("2 seconds");
+                    break;
+                }
+
+            case 12:
+                if(rate(input).equals("Password Grade = A")){
+                    System.out.println("34,000 years");
+                    break;
+                }
+                else if(hasNumbers(input) && hasLower(input) && hasUppers(input)){
+                    System.out.println("2,000 years");
+                    break;
+                }
+                else if (hasUppers(input) && hasLower(input)){
+                    System.out.println("300 years");
+                    break;
+                }
+                else if(hasLower(input)){
+                    System.out.println("3 weeks");
+                    break;
+                }
+
+                else if(hasNumbers(input)){
+                    System.out.println("25 seconds");
+                    break;
+                }
+
+            case 13:
+                if(rate(input).equals("Password Grade = A")){
+                    System.out.println("2,000,000 years");
+                    break;
+                }
+                else if(hasNumbers(input) && hasLower(input) && hasUppers(input)){
+                    System.out.println("100,000 years");
+                    break;
+                }
+                else if (hasUppers(input) && hasLower(input)){
+                    System.out.println("16,000 years");
+                    break;
+                }
+                else if(hasLower(input)){
+                    System.out.println("1 year");
+                    break;
+                }
+                else if(hasNumbers(input)){
+                    System.out.println("4 minutes");
+                    break;
+                }
+
+            case 14:
+                if(rate(input).equals("Password Grade = A")){
+                    System.out.println("200,000,000 years");
+                    break;
+                }
+                else if(hasNumbers(input) && hasLower(input) && hasUppers(input)){
+                    System.out.println("9,000,000 years");
+                    break;
+                }
+                else if (hasUppers(input) && hasLower(input)){
+                    System.out.println("800,000 years");
+                    break;
+                }
+                else if(hasLower(input)){
+                    System.out.println("51 years");
+                    break;
+                }
+
+                else if(hasNumbers(input)){
+                    System.out.println("41 minutes");
+                    break;
+                }
+        }
     }
 
     public static void dictionaryAttack(String input){
@@ -98,8 +332,11 @@ public class PasswordRater {
 
     }
     public static void main(String[] args){
-        rate("hellS1*D");
-        timeEstimation("Aaron615");
+        String grade = rate("hellS1*D");
+   //     bruteForce("hellS1*Da");
+        System.out.println(grade);
+    //    timeEstimation("Aaron615");
+        bruteForce("12AAbb!!o0");
     }
 
 }
