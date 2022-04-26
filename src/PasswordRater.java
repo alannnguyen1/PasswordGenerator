@@ -313,7 +313,7 @@ public class PasswordRater {
         String line;
         boolean found = false;
         try{
-            FileReader fr = new FileReader("rockyou.txt");
+            FileReader fr = new FileReader("src/rockyou.txt");
             br = new BufferedReader(fr);
             while((line = br.readLine())!= null){
                 if(line.equals(input)){
@@ -335,7 +335,7 @@ public class PasswordRater {
         String grade = rate("hellS1*D");
    //     bruteForce("hellS1*Da");
         System.out.println(grade);
-     //   timeEstimationDictionary("Aaron615");
+        timeEstimationDictionary("Aaron615");
         bruteForce("12AAbb!!o0");
     }
 
