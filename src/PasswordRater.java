@@ -67,12 +67,17 @@ public class PasswordRater {
 
     public static void timeEstimationDictionary(String input){
         long startTime = System.currentTimeMillis();
-        dictionaryAttack(input);
+        boolean check = dictionaryAttack(input);
         long finishTime = System.currentTimeMillis();
         long execution = finishTime - startTime;
         long toMinute = TimeUnit.MILLISECONDS.toMinutes(execution);
         long toSeconds = TimeUnit.MILLISECONDS.toSeconds(execution);
-        System.out.println("Execution time of dictionary attack in miliseconds: " + execution);
+        if(check == false){
+            System.out.println("Input password could not be found in dictionary");
+        }
+        else if(check == true){
+            System.out.println("Execution time of dictionary attack in miliseconds: " + execution);
+        }
     }
 
     public static boolean hasSymbol(String input){
@@ -308,7 +313,7 @@ public class PasswordRater {
         }
     }
 
-    public static void dictionaryAttack(String input){
+    public static boolean  dictionaryAttack(String input){
         BufferedReader br = null;
         String line;
         boolean found = false;
@@ -319,23 +324,22 @@ public class PasswordRater {
                 if(line.equals(input)){
                     System.out.println("Found password in dictionary");
                     found = true;
-                    break;
+                    return true;
                 }
             }
         }
         catch(Exception e){
             System.out.println("Error with reading file");
         }
-        if(found == false){
-            System.out.println("Input password could not be found in dictionary");
-        }
 
+        return false;
     }
+
     public static void main(String[] args){
         String grade = rate("hellS1*D");
    //     bruteForce("hellS1*Da");
         System.out.println(grade);
-        timeEstimationDictionary("Aaron615");
+        timeEstimationDictionary("123456");
         bruteForce("12AAbb!!o0");
     }
 
