@@ -65,7 +65,7 @@ public class PasswordRater {
 
     }
 
-    public static void timeEstimation(String input){
+    public static void timeEstimationDictionary(String input){
         long startTime = System.currentTimeMillis();
         dictionaryAttack(input);
         long finishTime = System.currentTimeMillis();
@@ -335,7 +335,7 @@ public class PasswordRater {
         String grade = rate("hellS1*D");
    //     bruteForce("hellS1*Da");
         System.out.println(grade);
-    //    timeEstimation("Aaron615");
+     //   timeEstimationDictionary("Aaron615");
         bruteForce("12AAbb!!o0");
     }
 
