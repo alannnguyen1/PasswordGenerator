@@ -314,7 +314,7 @@ public class PasswordRater {
 
                 }
         }
-        return "";
+        return "Computational Infeasible";
     }
 
     public static boolean  dictionaryAttack(String input){

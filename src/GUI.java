@@ -28,7 +28,7 @@ public class GUI {
         //Create frame
         frame = new JFrame("Password Generator");
         frame.setLocation(300,300);
-        frame.setPreferredSize(new Dimension(300, 310));
+        frame.setPreferredSize(new Dimension(340, 340));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.pack();
@@ -45,27 +45,27 @@ public class GUI {
 
         //check box
         letterBox = new JCheckBox("Letter a-z");
-        letterBox.setBounds(45, 35, 200, 25);
+        letterBox.setBounds(65, 35, 200, 25);
         panel.add(letterBox);
 
         symbolBox = new JCheckBox("Use symbol (@#$%%^...)");
-        symbolBox.setBounds(45, 55, 200, 25);
+        symbolBox.setBounds(65, 55, 200, 25);
         panel.add(symbolBox);
 
         numBox = new JCheckBox("Use number (1-9)");
-        numBox.setBounds(45, 75, 200, 25);
+        numBox.setBounds(65, 75, 200, 25);
         panel.add(numBox);
 
         uppercaseBox = new JCheckBox("Capitalize letters (A-Z) ");
-        uppercaseBox.setBounds(45,95,200,25);
+        uppercaseBox.setBounds(65,95,200,25);
         panel.add(uppercaseBox);
 
         passLen = new JLabel("Length:");
-        passLen.setBounds(55, 120, 50,25);
+        passLen.setBounds(74, 120, 50,25);
         panel.add(passLen);
 
         textPassLen = new JTextField(30);
-        textPassLen.setBounds(105, 120, 70,25);
+        textPassLen.setBounds(124, 120, 70,25);
         panel.add(textPassLen);
 
         resultLabel = new JLabel("Your generated password");
@@ -76,23 +76,30 @@ public class GUI {
         passResult = new JTextField(200);
         //user can type other passwords from here to rate their own password
         passResult.setText("Show password here");
-        passResult.setBounds(10, 190, 280, 25);
+        passResult.setBounds(10, 190, 320, 25);
         panel.add(passResult);
 
         //display rater result
         // get password from passResult text field to rate
         raterResult = new JTextArea(10, 100);
         raterResult.setEnabled(false);
-        raterResult.setBounds(10, 225, 280, 50);
+        raterResult.setBounds(10, 225, 320, 80);
         panel.add(raterResult);
 
         generatorBtn = new JButton("Generate");
-        generatorBtn.setBounds(30, 150, 100, 30);
+        generatorBtn.setBounds(55, 150, 100, 30);
         panel.add(generatorBtn);
         generatorBtn.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae){
                 String length = textPassLen.getText();
-                int lengthPass = Integer.parseInt(length);
+                int lengthPass;
+                if (length.isEmpty()){
+                    lengthPass = 0;
+                }
+                else{
+                    lengthPass = Integer.parseInt(length);
+                }
+
                 boolean useLetter = letterBox.isSelected();
                 boolean useSymbol = symbolBox.isSelected();
                 boolean useNumb = numBox.isSelected();
@@ -103,7 +110,7 @@ public class GUI {
         });
 
         raterBtn = new JButton(("Rate"));
-        raterBtn.setBounds(150, 150, 100, 30);
+        raterBtn.setBounds(175, 150, 100, 30);
         panel.add(raterBtn);
         raterBtn.addActionListener(new ActionListener() {
             @Override
@@ -111,13 +118,20 @@ public class GUI {
                 String pass = passResult.getText();
                 String passRate = PasswordRater.rate(pass);
                 String timeEst = PasswordRater.timeEstimationDictionary(pass);
-                String bruteF ="Password can be cracked in "+ PasswordRater.bruteForce(pass);
+                String bruteF;
+                if(PasswordRater.bruteForce(pass).equals("Computational Infeasible")){
+                    bruteF = "Computational Infeasible";
+                }
+                else{
+                    bruteF = "Password can be cracked in "+ PasswordRater.bruteForce(pass);
+                }
                 raterResult.setText("");
-                raterResult.append(passRate);
+                raterResult.setText(passRate + "\n" + timeEst + "\n" + bruteF);
+                /*raterResult.append(passRate);
                 raterResult.append("\n");
                 raterResult.append(timeEst);
                 raterResult.append("\n");
-                raterResult.append(bruteF);
+                raterResult.append("Password can be cracked in "+ bruteF);*/
             }
         });
 
