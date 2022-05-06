@@ -3,6 +3,7 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class PasswordGenerator {
+
     public static String generate(boolean letters, boolean symbols, boolean numbers, boolean capitals, int passLength){
         if(!letters && !symbols && !numbers && !capitals) {
             return "Please select at least one requirement";
@@ -49,8 +50,10 @@ public class PasswordGenerator {
         }
         return password.toString();
     }
+    /*
     public static void main(String[] args) {
         String pass = generate(true, true, true, true, 5);
         System.out.println(pass);
     }
+*/
 }

@@ -2,6 +2,8 @@
 import com.sun.source.tree.UsesTree;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 
 
@@ -66,14 +68,6 @@ public class GUI {
         textPassLen.setBounds(105, 120, 70,25);
         panel.add(textPassLen);
 
-        generatorBtn = new JButton("Generate");
-        generatorBtn.setBounds(30, 150, 100, 30);
-        panel.add(generatorBtn);
-
-        raterBtn = new JButton(("Rate"));
-        raterBtn.setBounds(150, 150, 100, 30);
-        panel.add(raterBtn);
-
         resultLabel = new JLabel("Your generated password");
         resultLabel.setBounds(20, 170, 200, 30);
         panel.add(reqLabel);
@@ -88,17 +82,50 @@ public class GUI {
         //display rater result
         // get password from passResult text field to rate
         raterResult = new JTextArea(10, 100);
-        raterResult.setText("Your password is: Weak/Strong \nTime to crack your pass word: 10 years");
         raterResult.setEnabled(false);
         raterResult.setBounds(10, 225, 280, 50);
         panel.add(raterResult);
 
+        generatorBtn = new JButton("Generate");
+        generatorBtn.setBounds(30, 150, 100, 30);
+        panel.add(generatorBtn);
+        generatorBtn.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                String length = textPassLen.getText();
+                int lengthPass = Integer.parseInt(length);
+                boolean useLetter = letterBox.isSelected();
+                boolean useSymbol = symbolBox.isSelected();
+                boolean useNumb = numBox.isSelected();
+                boolean useCap = uppercaseBox.isSelected();
+                String pass = PasswordGenerator.generate(useLetter, useSymbol, useNumb, useCap, lengthPass);
+                passResult.setText(pass);
+            }
+        });
+
+        raterBtn = new JButton(("Rate"));
+        raterBtn.setBounds(150, 150, 100, 30);
+        panel.add(raterBtn);
+        raterBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String pass = passResult.getText();
+                String passRate = PasswordRater.rate(pass);
+                String timeEst = PasswordRater.timeEstimationDictionary(pass);
+                String bruteF ="Password can be cracked in "+ PasswordRater.bruteForce(pass);
+                raterResult.setText("");
+                raterResult.append(passRate);
+                raterResult.append("\n");
+                raterResult.append(timeEst);
+                raterResult.append("\n");
+                raterResult.append(bruteF);
+            }
+        });
 
         frame.setVisible(true);
 
     }
 
-    public static void displayGUI(){
+    public static void main(String[] args){
         GUI gui = new GUI();
         gui.createGUI();
     }
