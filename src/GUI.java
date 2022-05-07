@@ -120,7 +120,7 @@ public class GUI {
                 String timeEst = PasswordRater.timeEstimationDictionary(pass);
                 String bruteF;
                 if(PasswordRater.bruteForce(pass).equals("Computational Infeasible")){
-                    bruteF = "Computational Infeasible";
+                    bruteF = "Computationally Infeasible";
                 }
                 else{
                     bruteF = "Password can be cracked in "+ PasswordRater.bruteForce(pass);
