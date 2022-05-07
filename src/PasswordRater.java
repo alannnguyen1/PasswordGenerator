@@ -322,7 +322,7 @@ public class PasswordRater {
         String line;
         boolean found = false;
         try{
-            FileReader fr = new FileReader("src/rockyou.txt");
+            FileReader fr = new FileReader("rockyou.txt");
             br = new BufferedReader(fr);
             while((line = br.readLine())!= null){
                 if(line.equals(input)){
