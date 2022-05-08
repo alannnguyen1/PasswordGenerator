@@ -66,9 +66,9 @@ public class PasswordRater {
     }
 
     public static String timeEstimationDictionary(String input){
-        long startTime = System.currentTimeMillis();
+        long startTime = System.nanoTime();
         boolean check = dictionaryAttack(input);
-        long finishTime = System.currentTimeMillis();
+        long finishTime = System.nanoTime();
         long execution = finishTime - startTime;
         long toMinute = TimeUnit.MILLISECONDS.toMinutes(execution);
         long toSeconds = TimeUnit.MILLISECONDS.toSeconds(execution);
@@ -76,7 +76,7 @@ public class PasswordRater {
             return ("Input password could not be found in dictionary");
         }
         else if(check == true){
-            return("Execution time of dictionary attack in miliseconds: " + execution);
+            return("Password found in dictionary.\n Time taken(ns):" + execution);
         }
         return "N/A";
     }
