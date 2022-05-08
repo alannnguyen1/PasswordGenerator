@@ -16,15 +16,6 @@ public class PasswordGenerator {
                 "n","o","p","q","r","s","t","u","v","w","x","y","z"));
         ArrayList<String> symbolsList = new ArrayList<>(Arrays.asList("!","@","#","$","%","^","&","*","(",")"));
         ArrayList<String> numbersList = new ArrayList<>(Arrays.asList("1","2","3","4","5","6","7","8","9","0"));
-        int capital = rand.nextInt(passLength);
-        int special = rand.nextInt(passLength);
-        while (capital == special) {
-            special = rand.nextInt(passLength);
-        }
-        int number = rand.nextInt(passLength);
-        while (capital == number || special == number) {
-            number = rand.nextInt(passLength);
-        }
         StringBuilder password = new StringBuilder("");
         for(int i = 0; i < passLength; i++) {
             boolean done = false;
