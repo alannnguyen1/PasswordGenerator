@@ -125,8 +125,15 @@ public class GUI {
                 else{
                     bruteF = "Password can be cracked in "+ PasswordRater.bruteForce(pass);
                 }
+                
                 raterResult.setText("");
-                raterResult.setText(passRate + "\n" + timeEst + "\n" + bruteF);
+                if(timeEst.equals("Input password could not be found in dictionary")){
+                    raterResult.setText(passRate + "\n" + timeEst + "\n" + bruteF);
+                }
+                else{
+                    raterResult.setText(passRate + "\n" + timeEst + "\n");
+                }
+              
                 /*raterResult.append(passRate);
                 raterResult.append("\n");
                 raterResult.append(timeEst);
