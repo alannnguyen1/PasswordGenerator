@@ -125,10 +125,14 @@ public class PasswordRater {
                     return ("5 seconds");
 
                 }
-                else if(hasNumbers(input) && hasLower(input) && hasUppers(input)){
+                else if((hasNumbers(input) && hasLower(input) && hasUppers(input)) || 
+                (hasUppers(input) && hasLower(input) && hasSymbol(input)) || 
+                (hasUppers(input) && hasNumbers(input) && hasSymbol(input)) ||
+                hasLower(input) && hasNumbers(input) && hasSymbol(input)
+                ){
                     return ("1 second");
-
                 }
+              
                 else{
                     return ("Instantly");
 
@@ -138,18 +142,27 @@ public class PasswordRater {
                     return ("6 minutes");
 
                  }
-                else if(hasUppers(input) && hasLower(input) && hasNumbers(input)){
+                 else if((hasNumbers(input) && hasLower(input) && hasUppers(input)) || 
+                (hasUppers(input) && hasLower(input) && hasSymbol(input)) || 
+                (hasUppers(input) && hasNumbers(input) && hasSymbol(input)) ||
+                hasLower(input) && hasNumbers(input) && hasSymbol(input)
+                ){
                     return ("1 minute");
-
                 }
+             
                 
                 else if(hasUppers(input) && hasLower(input)){
                     return ("25 seconds");
 
                 }
-                else if((hasLower(input) && hasNumbers(input)) || (hasUppers(input) && hasNumbers(input))){
-                    return("25 seconds");
+                else if((hasLower(input) && hasNumbers(input)) 
+                || (hasUppers(input) && hasNumbers(input)) ||
+                (hasUppers(input) && hasSymbol(input)) ||
+                (hasLower(input) && hasSymbol(input))
+                ){
+                    return ("25 seconds");
                 }
+              
                 else{
                     return ("Instantly");
                 }
@@ -160,7 +173,12 @@ public class PasswordRater {
                     return ("8 hours");
 
                 }
-                else if(hasNumbers(input) && hasLower(input) && hasUppers(input)){
+                else if((hasNumbers(input) && hasLower(input) && hasUppers(input)) || 
+                (hasUppers(input) && hasLower(input) && hasSymbol(input)) || 
+                (hasUppers(input) && hasNumbers(input) && hasSymbol(input)) ||
+                hasLower(input) && hasNumbers(input) && hasSymbol(input)
+                )
+                {
                     return ("1 hour");
 
                 }
@@ -169,9 +187,14 @@ public class PasswordRater {
                     return ("22 minutes");
 
                 }
-                else if((hasLower(input) && hasNumbers(input)) || (hasUppers(input) && hasNumbers(input))){
+                else if((hasLower(input) && hasNumbers(input)) 
+                || (hasUppers(input) && hasNumbers(input)) ||
+                (hasUppers(input) && hasSymbol(input)) ||
+                (hasLower(input) && hasSymbol(input))
+                ){
                     return("5 seconds");
                 }
+
                 else if(hasNumbers(input) || hasSymbol(input)){
                     return ("Instantly");
 
@@ -187,17 +210,26 @@ public class PasswordRater {
                     return ("3 weeks");
 
                 }
-                else if(hasNumbers(input) && hasLower(input) && hasUppers(input)){
+                else if((hasNumbers(input) && hasLower(input) && hasUppers(input)) || 
+                (hasUppers(input) && hasLower(input) && hasSymbol(input)) || 
+                (hasUppers(input) && hasNumbers(input) && hasSymbol(input)) ||
+                hasLower(input) && hasNumbers(input) && hasSymbol(input)
+                ){
                     return ("3 days");
-
                 }
+        
                 else if (hasUppers(input) && hasLower(input)){
                     return ("19 hours");
 
                 }
-                else if((hasLower(input) && hasNumbers(input)) || (hasUppers(input) && hasNumbers(input))){
-                    return("2 minutes years");
+                else if((hasLower(input) && hasNumbers(input)) 
+                || (hasUppers(input) && hasNumbers(input)) ||
+                (hasUppers(input) && hasSymbol(input)) ||
+                (hasLower(input) && hasSymbol(input))
+                ){
+                    return ("2 minutes");
                 }
+                
                 else if(hasLower(input) || hasUppers(input)){
                     return ("2 minutes");
 
@@ -214,17 +246,26 @@ public class PasswordRater {
                     return ("5 years");
 
                 }
-                else if(hasNumbers(input) && hasLower(input) && hasUppers(input)){
+                else if((hasNumbers(input) && hasLower(input) && hasUppers(input)) || 
+                (hasUppers(input) && hasLower(input) && hasSymbol(input)) || 
+                (hasUppers(input) && hasNumbers(input) && hasSymbol(input)) ||
+                hasLower(input) && hasNumbers(input) && hasSymbol(input)
+                ){
                     return ("7 months");
-
                 }
+            
                 else if (hasUppers(input) && hasLower(input)){
                     return ("1 month");
 
                 }
-                else if((hasLower(input) && hasNumbers(input)) || (hasUppers(input) && hasNumbers(input))){
-                    return("58 minutes");
+                else if((hasLower(input) && hasNumbers(input)) 
+                || (hasUppers(input) && hasNumbers(input)) ||
+                (hasUppers(input) && hasSymbol(input)) ||
+                (hasLower(input) && hasSymbol(input))
+                ){
+                    return ("58 minutes");
                 }
+            
                 else if(hasLower(input) || hasUppers(input)){
                     return ("58 minutes");
 
@@ -241,17 +282,26 @@ public class PasswordRater {
                     return ("400 years");
 
                 }
-                else if(hasNumbers(input) && hasLower(input) && hasUppers(input)){
+                else if((hasNumbers(input) && hasLower(input) && hasUppers(input)) || 
+                (hasUppers(input) && hasLower(input) && hasSymbol(input)) || 
+                (hasUppers(input) && hasNumbers(input) && hasSymbol(input)) ||
+                hasLower(input) && hasNumbers(input) && hasSymbol(input)
+                ){
                     return ("41 years");
-
                 }
+             
                 else if (hasUppers(input) && hasLower(input)){
                     return ("5 years");
 
                 }
-                else if((hasLower(input) && hasNumbers(input)) || (hasUppers(input) && hasNumbers(input))){
-                    return("1 years");
+                else if((hasLower(input) && hasNumbers(input)) 
+                || (hasUppers(input) && hasNumbers(input)) ||
+                (hasUppers(input) && hasSymbol(input)) ||
+                (hasLower(input) && hasSymbol(input))
+                ){
+                    return ("1 years");
                 }
+              
                 else if(hasLower(input) || hasUppers(input)){
                     return ("1 day");
 
@@ -267,17 +317,26 @@ public class PasswordRater {
                     return ("34,000 years");
 
                 }
-                else if(hasNumbers(input) && hasLower(input) && hasUppers(input)){
+                else if((hasNumbers(input) && hasLower(input) && hasUppers(input)) || 
+                (hasUppers(input) && hasLower(input) && hasSymbol(input)) || 
+                (hasUppers(input) && hasNumbers(input) && hasSymbol(input)) ||
+                hasLower(input) && hasNumbers(input) && hasSymbol(input)
+                ){
                     return ("2,000 years");
-
                 }
+               
                 else if (hasUppers(input) && hasLower(input)){
                     return ("300 years");
 
                 }
-                else if((hasLower(input) && hasNumbers(input)) || (hasUppers(input) && hasNumbers(input))){
-                    return("3 years");
+                else if((hasLower(input) && hasNumbers(input)) 
+                || (hasUppers(input) && hasNumbers(input)) ||
+                (hasUppers(input) && hasSymbol(input)) ||
+                (hasLower(input) && hasSymbol(input))
+                ){
+                    return ("3 years");
                 }
+                
                 else if(hasLower(input) || hasUppers(input)){
                     return ("3 weeks");
 
@@ -293,13 +352,24 @@ public class PasswordRater {
                     return ("2,000,000 years");
 
                 }
-                else if(hasNumbers(input) && hasLower(input) && hasUppers(input)){
+                else if((hasNumbers(input) && hasLower(input) && hasUppers(input)) || 
+                (hasUppers(input) && hasLower(input) && hasSymbol(input)) || 
+                (hasUppers(input) && hasNumbers(input) && hasSymbol(input)) ||
+                hasLower(input) && hasNumbers(input) && hasSymbol(input)
+                ){
                     return ("100,000 years");
-
                 }
+               
                 else if (hasUppers(input) && hasLower(input)){
                     return ("16,000 years");
 
+                }
+                else if((hasLower(input) && hasNumbers(input)) 
+                || (hasUppers(input) && hasNumbers(input)) ||
+                (hasUppers(input) && hasSymbol(input)) ||
+                (hasLower(input) && hasSymbol(input))
+                ){
+                    return ("1 years");
                 }
                 else if((hasLower(input) && hasNumbers(input)) || (hasUppers(input) && hasNumbers(input))){
                     return("1 years");
@@ -320,18 +390,26 @@ public class PasswordRater {
                     return ("200,000,000 years");
 
                 }
-                else if(hasNumbers(input) && hasLower(input) && hasUppers(input)){
+                else if((hasNumbers(input) && hasLower(input) && hasUppers(input)) || 
+                (hasUppers(input) && hasLower(input) && hasSymbol(input)) || 
+                (hasUppers(input) && hasNumbers(input) && hasSymbol(input)) ||
+                hasLower(input) && hasNumbers(input) && hasSymbol(input)
+                ){
                     return ("9,000,000 years");
-
                 }
+            
                 else if (hasUppers(input) && hasLower(input)){
                     return ("800,000 years");
 
                 }
-                else if((hasLower(input) && hasNumbers(input)) || (hasUppers(input) && hasNumbers(input))){
-                    return("51 years");
+                else if((hasLower(input) && hasNumbers(input)) 
+                || (hasUppers(input) && hasNumbers(input)) ||
+                (hasUppers(input) && hasSymbol(input)) ||
+                (hasLower(input) && hasSymbol(input))
+                ){
+                    return ("51 years");
                 }
-
+            
                 else if(hasLower(input) || hasUppers(input)){
                     return ("51 years");
 
