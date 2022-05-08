@@ -70,8 +70,8 @@ public class PasswordRater {
         boolean check = dictionaryAttack(input);
         long finishTime = System.nanoTime();
         long execution = finishTime - startTime;
-        long toMinute = TimeUnit.MILLISECONDS.toMinutes(execution);
-        long toSeconds = TimeUnit.MILLISECONDS.toSeconds(execution);
+        long toSeconds =  TimeUnit.NANOSECONDS.toSeconds(execution);
+        
         if(check == false){
             return ("Input password could not be found in dictionary");
         }
@@ -99,7 +99,7 @@ public class PasswordRater {
 
     public static boolean hasLower(String input){
         for (int i = 0; i < input.length(); i++) {
-            if (Character.isUpperCase(input.charAt(i))) {
+            if (Character.isLowerCase(input.charAt(i))) {
                 return true;
             }
         }
@@ -142,9 +142,16 @@ public class PasswordRater {
                     return ("1 minute");
 
                 }
+                
                 else if(hasUppers(input) && hasLower(input)){
                     return ("25 seconds");
 
+                }
+                else if((hasLower(input) && hasNumbers(input)) || (hasUppers(input) && hasNumbers(input))){
+                    return("25 seconds");
+                }
+                else{
+                    return ("Instantly");
                 }
 
 
@@ -162,12 +169,14 @@ public class PasswordRater {
                     return ("22 minutes");
 
                 }
-
-                else if(hasNumbers(input)){
+                else if((hasLower(input) && hasNumbers(input)) || (hasUppers(input) && hasNumbers(input))){
+                    return("5 seconds");
+                }
+                else if(hasNumbers(input) || hasSymbol(input)){
                     return ("Instantly");
 
                 }
-                else if(hasLower(input)){
+                else if(hasLower(input) || hasUppers(input)){
                     return ("5 seconds");
 
                 }
@@ -186,13 +195,15 @@ public class PasswordRater {
                     return ("19 hours");
 
                 }
-
-                else if(hasLower(input)){
+                else if((hasLower(input) && hasNumbers(input)) || (hasUppers(input) && hasNumbers(input))){
+                    return("2 minutes years");
+                }
+                else if(hasLower(input) || hasUppers(input)){
                     return ("2 minutes");
 
                 }
 
-                else if(hasNumbers(input)){
+                else if(hasNumbers(input)|| hasSymbol(input)){
                     return ("Instantly");
 
                 }
@@ -211,16 +222,19 @@ public class PasswordRater {
                     return ("1 month");
 
                 }
-                else if(hasLower(input)){
+                else if((hasLower(input) && hasNumbers(input)) || (hasUppers(input) && hasNumbers(input))){
+                    return("58 minutes");
+                }
+                else if(hasLower(input) || hasUppers(input)){
                     return ("58 minutes");
 
                 }
 
-                else if(hasNumbers(input)){
+                else if(hasNumbers(input) || hasSymbol(input)){
                     return ("Instantly");
 
                 }
-                break;
+        
 
             case 11:
                 if(rate(input).equals("Password Grade = A")){
@@ -235,12 +249,15 @@ public class PasswordRater {
                     return ("5 years");
 
                 }
-                else if(hasLower(input)){
+                else if((hasLower(input) && hasNumbers(input)) || (hasUppers(input) && hasNumbers(input))){
+                    return("1 years");
+                }
+                else if(hasLower(input) || hasUppers(input)){
                     return ("1 day");
 
                 }
 
-                else if(hasNumbers(input)){
+                else if(hasNumbers(input) || hasSymbol(input)){
                     return ("2 seconds");
 
                 }
@@ -258,16 +275,19 @@ public class PasswordRater {
                     return ("300 years");
 
                 }
-                else if(hasLower(input)){
+                else if((hasLower(input) && hasNumbers(input)) || (hasUppers(input) && hasNumbers(input))){
+                    return("3 years");
+                }
+                else if(hasLower(input) || hasUppers(input)){
                     return ("3 weeks");
 
                 }
 
-                else if(hasNumbers(input)){
+                else if(hasNumbers(input)|| hasSymbol(input)){
                     return ("25 seconds");
 
                 }
-                break;
+            
             case 13:
                 if(rate(input).equals("Password Grade = A")){
                     return ("2,000,000 years");
@@ -281,11 +301,15 @@ public class PasswordRater {
                     return ("16,000 years");
 
                 }
-                else if(hasLower(input)){
+                else if((hasLower(input) && hasNumbers(input)) || (hasUppers(input) && hasNumbers(input))){
+                    return("1 years");
+                }
+
+                else if(hasLower(input) || hasUppers(input)){
                     return ("1 year");
 
                 }
-                else if(hasNumbers(input)){
+                else if(hasNumbers(input) || hasSymbol(input)){
                     return ("4 minutes");
 
                 }
@@ -304,12 +328,15 @@ public class PasswordRater {
                     return ("800,000 years");
 
                 }
-                else if(hasLower(input)){
+                else if((hasLower(input) && hasNumbers(input)) || (hasUppers(input) && hasNumbers(input))){
+                    return("51 years");
+                }
+
+                else if(hasLower(input) || hasUppers(input)){
                     return ("51 years");
 
                 }
-
-                else if(hasNumbers(input)){
+                else if(hasNumbers(input)|| hasSymbol(input)){
                     return ("41 minutes");
 
                 }
